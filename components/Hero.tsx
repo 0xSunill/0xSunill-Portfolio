@@ -1,52 +1,70 @@
 "use client";
-import { styles } from "@/styles";
 import React from "react";
 import { motion } from "framer-motion";
-
-import { Typewriter, useTypewriter } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 import { ComputersCanvas } from "./canvas";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const [text] = useTypewriter({
-    words: [" Sunil Reddy", "A Developer"],
-
+    words: [" Su", " Sunil Reddy"],
     loop: true,
     delaySpeed: 2000,
   });
+
   return (
-    <section className="relative -z-0 w-full h-screen mx-auto -mt-24">
-      <div className=" absolute top-24 z-10 right-0 left-0 sm:pl-16 pl-5  flex flex-row items-start gap-5">
-        <div className="flex flex-col justify-center items-center">
-          <div className="w-5 h-5 rounded-full bg-[#0d1c35]" />
-          <div className="w-1 sm:h-80 h-60 violet-gradient" />
-        </div>
-        <div className="flex flex-col gap-5 w-full  ">
-          <h1
-            className={`font-black lg:text-[80px] sm:text-[55px] xs:text-[45px] text-[31px] lg:leading-[98px] mt-2 text-white`}
-          >
-            I'm <span className="text-[#191b3a]">{text}</span>
-          </h1>
-          <p className="text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[20px] lg:leading-[40px]">
-            Full Stack Web And <br className="md:hidden block" /> Blockchain
-            Developer{" "}
-          </p>
+    <section className="relative w-full h-screen overflow-hidden">
+      {/* Animated SVG background */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/assets/aurora-waves.svg"
+          alt=""
+          className="hero-bg w-full h-full object-cover opacity-90 pointer-events-none select-none"
+        />
+      </div>
+
+      {/* Content row: text left, canvas right */}
+      <div className="relative z-10 h-full mx-auto max-w-7xl px-6 sm:px-10">
+        {/* top-aligned row */}
+        <div className="h-full flex flex-col  items-start justify-start gap-10">
+          {/* LEFT: Copy with accent line */}
+          <div className="lg:flex-[0.52] w-full pt-20">
+            <div className="flex items-start gap-5">
+              <div className="flex flex-col items-center">
+                <div className="w-3 h-3 rounded-full bg-purple-500" />
+                <div className="w-[2px] h-32 bg-gradient-to-b from-purple-500 to-transparent" />
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <h1 className="font-black text-foreground text-[40px] sm:text-[56px] lg:text-[68px] leading-tight">
+                  I&apos;m <span className="text-purple-500">{text}</span>
+                </h1>
+
+                <p className="text-muted-foreground font-medium text-[18px] sm:text-[24px] leading-[1.5]">
+                  Full Stack Web And Blockchain Developer
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: 3D computer canvas (taller, not absolutely positioned) */}
+          <div className="lg:flex-[0.48] w-full">
+            <div className="relative w-full h-[460px] sm:h-[560px] lg:h-[640px]">
+              {/* no absolute/overflow-hidden so the model can sit high */}
+              <ComputersCanvas />
+            </div>
+          </div>
         </div>
       </div>
-      <ComputersCanvas />
 
-      <div className="absolute sm:bottom-8 bottom-20 w-full flex justify-center items-center">
-        <a href="#about">
-          <div className="w-[30px] h-[54px] rounded-3xl sm:border-4 border-2 border-secondary flex justify-center items-start p-2">
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 sm:bottom-10 w-full flex justify-center">
+        <a href="#about" aria-label="Scroll to content">
+          <div className="w-[30px] h-[54px] rounded-3xl border-2 sm:border-4 border-purple-500 flex justify-center items-start p-2 bg-background/70 backdrop-blur">
             <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
+              animate={{ y: [0, 24, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-3 h-3 rounded-full bg-purple-500 mb-1"
             />
           </div>
         </a>
