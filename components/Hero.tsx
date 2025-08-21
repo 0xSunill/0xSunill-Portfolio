@@ -6,7 +6,7 @@ import { ComputersCanvas } from "./canvas";
 
 const Hero: React.FC = () => {
   const [text] = useTypewriter({
-    words: [" Su", " Sunil Reddy"],
+    words: [ "Full Stack Web Developer", " A Blockchain Developer"],
     loop: true,
     delaySpeed: 2000,
   });
@@ -25,29 +25,34 @@ const Hero: React.FC = () => {
       {/* Content row: text left, canvas right */}
       <div className="relative z-10 h-full mx-auto max-w-7xl px-6 sm:px-10">
         {/* top-aligned row */}
-        <div className="h-full flex flex-col  items-start justify-start gap-10">
+        <div className="h-full flex flex-col  items-center justify-center gap-10">
           {/* LEFT: Copy with accent line */}
-          <div className="lg:flex-[0.52] w-full pt-20">
-            <div className="flex items-start gap-5">
-              <div className="flex flex-col items-center">
-                <div className="w-3 h-3 rounded-full bg-purple-500" />
-                <div className="w-[2px] h-32 bg-gradient-to-b from-purple-500 to-transparent" />
-              </div>
+          <div className="lg:flex-[0.5] w-full pt-15">
+            <div className="flex items-center justify-center text-center ">
+
 
               <div className="flex flex-col gap-4">
-                <h1 className="font-black text-foreground text-[40px] sm:text-[56px] lg:text-[68px] leading-tight">
-                  I&apos;m <span className="text-purple-500">{text}</span>
+                <h1 className="font-black text-[40px] sm:text-[56px] lg:text-[60px] leading-tight">
+                  <span className="bg-gradient-to-r from-[#f59e0b] via-[#ec4899] to-[#8b5cf6] bg-clip-text text-transparent">
+                    HEY I AM SUNIL REDDY
+                  </span>
                 </h1>
 
-                <p className="text-muted-foreground font-medium text-[18px] sm:text-[24px] leading-[1.5]">
-                  Full Stack Web And Blockchain Developer
-                </p>
+                <h1 className="font-black text-[30px] sm:text-[56px] lg:text-[40px] leading-tight">
+                  {/* Aurora gradient text */}
+                  <span className="bg-gradient-to-r text-center from-[#7c3aed] via-[#22d3ee] to-[#f472b6] bg-clip-text text-transparent">
+                    ✨{text}
+                  </span>
+
+
+                </h1>
+
               </div>
             </div>
           </div>
 
           {/* RIGHT: 3D computer canvas (taller, not absolutely positioned) */}
-          <div className="lg:flex-[0.48] w-full">
+          <div className="lg:flex-[0.5] w-full">
             <div className="relative w-full h-[460px] sm:h-[560px] lg:h-[640px]">
               {/* no absolute/overflow-hidden so the model can sit high */}
               <ComputersCanvas />
@@ -68,8 +73,12 @@ const Hero: React.FC = () => {
             />
           </div>
         </a>
+
+
       </div>
-    </section>
+
+
+    </section >
   );
 };
 
