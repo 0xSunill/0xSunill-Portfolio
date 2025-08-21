@@ -21,7 +21,7 @@ export default function Nav(){
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <a href="#contact" className="btn btn-primary">Hire me</a>
+            <a href="#contact" className="btn btn-primary">CV 📜</a>
           </div>
         </div>
       </div>
