@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants, type Transition } from "framer-motion";
 
 type Tile = {
   title: string;
@@ -9,12 +9,15 @@ type Tile = {
   grad: string;
 };
 
-const fade = (delay = 0) => ({
+/** Framer-compatible easing (cubic-bezier) */
+const EASE: Transition["ease"] = [0.22, 1, 0.36, 1]; // easeOut-ish
+
+const fade = (delay = 0): Variants => ({
   hidden: { opacity: 0, y: 14 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: "easeOut", delay },
+    transition: { duration: 0.55, ease: EASE, delay },
   },
 });
 
@@ -111,12 +114,7 @@ export default function About() {
           />
 
           {/* Tiles */}
-          <div
-            className="
-              mt-8 grid grid-cols-1 md:grid-cols-2 gap-4
-              auto-rows-[1fr]  /* equal heights */
-            "
-          >
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[1fr]">
             {tiles.map((t, i) => (
               <motion.article
                 key={t.title}
@@ -125,10 +123,7 @@ export default function About() {
                 whileInView="show"
                 viewport={{ once: true }}
                 whileHover={{ y: -6 }}
-                className="
-                  relative overflow-hidden rounded-xl border flex flex-col h-full
-                  transition-transform
-                "
+                className="relative overflow-hidden rounded-xl border flex flex-col h-full transition-transform"
                 style={{
                   borderColor: "var(--border)",
                   background: "rgba(255,255,255,0.03)",

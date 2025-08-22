@@ -12,7 +12,11 @@ import {
 import CanvasLoader from "../Loader";
 import Link from "next/link";
 
-const Ball = (props) => {
+interface BallProps {
+  name: string;
+}
+
+const Ball = (props: BallProps) => {
   const url = "/assets/tech/" + props.name + ".png";
   const [decal] = useTexture([url]);
   // const decal = useTexture('/assets/bgImg/herobg.png');
@@ -27,7 +31,6 @@ const Ball = (props) => {
           color="#fff8eb"
           polygonOffset
           polygonOffsetFactor={-5}
-          flatShading
         />
         <Decal
           position={[0, 0, 1]}
