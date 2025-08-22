@@ -1,0 +1,64 @@
+<!-- Orbital Rings — transparent background, subtle motion -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- rotating multi-color stroke -->
+    <linearGradient id="orbStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+      <animateTransform attributeName="gradientTransform" type="rotate"
+        from="0 .5 .5" to="360 .5 .5" dur="30s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <!-- soft blur for the glow dots -->
+    <filter id="blur7"><feGaussianBlur stdDeviation="7"/></filter>
+  </defs>
+
+  <!-- nothing behind = fully transparent -->
+
+  <!-- orbits group -->
+  <g fill="none" stroke="url(#orbStroke)" stroke-linecap="round" stroke-width="2.2" opacity=".85">
+    <!-- big ring -->
+    <g transform="translate(720 460)">
+      <circle r="360" stroke-dasharray="14 22">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="40s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" values="0; -300; 0" dur="14s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- mid ring -->
+      <circle r="260" stroke-dasharray="10 20" opacity=".75">
+        <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="32s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" values="0; -220; 0" dur="12s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- inner ring -->
+      <circle r="160" stroke-dasharray="8 18" opacity=".6">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="26s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" values="0; -160; 0" dur="10s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- small drifting glow dots (very subtle) -->
+  <g opacity=".6" filter="url(#blur7)">
+    <circle cx="280" cy="220" r="3" fill="#7c3aed">
+      <animate attributeName="cy" values="220;210;225;220" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="280;290;270;280" dur="14s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1220" cy="680" r="3" fill="#22d3ee">
+      <animate attributeName="cy" values="680;690;670;680" dur="13s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="1220;1210;1230;1220" dur="15s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="940" cy="180" r="3" fill="#f472b6">
+      <animate attributeName="cy" values="180;170;190;180" dur="11s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="940;950;930;940" dur="13s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- accessibility: respect reduced motion -->
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      animate, animateTransform { display: none; }
+    }
+  </style>
+</svg>

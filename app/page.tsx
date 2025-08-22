@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
 import Skills from "@/components/skills";
 
 export default function Home() {
@@ -15,6 +16,8 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+
+      <Projects />
       {/* later sections: wrap with <section className="container-pg mt-10"><div className="card p-6 sm:p-10">...</div></section> */}
 
     </main>

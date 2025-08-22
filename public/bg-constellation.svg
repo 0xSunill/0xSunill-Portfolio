@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="rayGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+      <animateTransform attributeName="gradientTransform" type="rotate" from="0 .5 .5" to="360 .5 .5" dur="40s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+
+  <!-- bottom-left corner rays -->
+  <g stroke="url(#rayGrad)" stroke-width="1.8" stroke-linecap="round" opacity="0.4" transform="translate(0,900)">
+    <line x1="0" y1="0" x2="360" y2="-120"/>
+    <line x1="0" y1="0" x2="420" y2="-240"/>
+    <line x1="0" y1="0" x2="520" y2="-360"/>
+    <line x1="0" y1="0" x2="640" y2="-480"/>
+    <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="120s" repeatCount="indefinite"/>
+  </g>
+
+  <style>
+    @media (prefers-reduced-motion: reduce) { animate, animateTransform { display:none } }
+  </style>
+</svg>

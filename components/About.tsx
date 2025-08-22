@@ -58,7 +58,7 @@ export default function About() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className="text-3xl sm:text-4xl  font-black leading-tight mb-6"
+          className="text-3xl sm:text-4xl  font-black leading-tight mb-6 text-center"
         >
           <span className="bg-gradient-to-r  from-[#7c3aed] via-[#22d3ee] to-[#f472b6] bg-clip-text text-transparent">
             About

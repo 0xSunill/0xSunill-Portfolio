@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import SkillBadge from "./SkillBadge";
 
 const tech = [
-    "solana", "rust", "anchor", "html", "css", "javascript", "typescript", "reactjs", "nextjs",
+    "solana", "rust", "anchor", "nextjs", "html", "css", "javascript", "typescript", "reactjs",
     "redux", "tailwind", "nodejs", "mongodb", "git", "solidity", "c++", "docker",
 ];
 

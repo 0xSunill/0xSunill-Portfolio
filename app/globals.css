@@ -323,3 +323,135 @@ body {
 .skill-badge:hover .skill-badge__flash {
   opacity: 1;
 }
+
+
+
+
+
+
+
+
+
+/* ---- Projects Section FX ---- */
+
+/* Aurora background blobs (animated) */
+.projects-aurora::before,
+.projects-aurora::after {
+  content: "";
+  position: absolute;
+  inset: -10% -10% auto -10%;
+  height: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  opacity: 0.35;
+  background:
+    radial-gradient(40% 40% at 20% 40%, rgba(124,58,237,.45), transparent 60%),
+    radial-gradient(35% 35% at 80% 30%, rgba(34,211,238,.45), transparent 60%),
+    radial-gradient(45% 45% at 60% 80%, rgba(244,114,182,.40), transparent 60%);
+  animation: auroraFloat 18s ease-in-out infinite alternate;
+}
+.projects-aurora::after {
+  inset: auto -10% -10% -10%;
+  height: 60%;
+  animation-duration: 22s;
+  opacity: 0.28;
+}
+@keyframes auroraFloat {
+  0%   { transform: translateY(-10px) scale(1); }
+  100% { transform: translateY(10px)  scale(1.05); }
+}
+
+/* Mouse-follow spotlight (CSS vars: --mx/--my are percentages) */
+.projects-spotlight {
+  position: absolute;
+  inset: 0;
+  --mx: 50%;
+  --my: 35%;
+  mask-image: radial-gradient(24rem 24rem at var(--mx) var(--my), rgba(0,0,0,0.9), transparent 70%);
+  -webkit-mask-image: radial-gradient(24rem 24rem at var(--mx) var(--my), rgba(0,0,0,0.9), transparent 70%);
+  background:
+    radial-gradient(20rem 20rem at var(--mx) var(--my), rgba(124,58,237,.18), transparent 70%),
+    radial-gradient(24rem 24rem at calc(var(--mx) + 10%) calc(var(--my) + 6%), rgba(34,211,238,.14), transparent 75%),
+    radial-gradient(22rem 22rem at calc(var(--mx) - 8%) calc(var(--my) - 8%), rgba(244,114,182,.14), transparent 75%);
+  transition: mask-position .2s ease, -webkit-mask-position .2s ease;
+}
+
+/* Card container with conic glow border */
+.projects-card {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  border-radius: 1rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+.projects-card .projects-border {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    conic-gradient(from 180deg at 50% 50%,
+      rgba(124,58,237,.65),
+      rgba(34,211,238,.65),
+      rgba(244,114,182,.65),
+      rgba(124,58,237,.65));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .35;
+  transition: opacity .3s ease, filter .3s ease;
+}
+.projects-card:hover .projects-border {
+  opacity: .85;
+  filter: blur(.3px);
+}
+
+/* Shine sweep over media */
+.projects-shine {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent 0%, rgba(255,255,255,.5) 20%, transparent 40%);
+  transform: translateX(-150%) skewX(-12deg);
+  transition: transform .8s ease;
+  mix-blend-mode: screen;
+  opacity: .25;
+}
+.projects-card:hover .projects-shine {
+  transform: translateX(120%) skewX(-12deg);
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,.18) 50%,
+    transparent 100%);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .projects-aurora::before,
+  .projects-aurora::after {
+    animation: none !important;
+  }
+  .projects-shine,
+  .skeleton::after {
+    animation: none !important;
+  }
+}
