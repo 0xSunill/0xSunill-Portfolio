@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
 import Image from "next/image";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -27,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             className="hero-bg w-full h-full object-cover opacity-90 pointer-events-none select-none"
           />
         </div>
-        <Nav />
+      
         {children}
       </body>
     </html>

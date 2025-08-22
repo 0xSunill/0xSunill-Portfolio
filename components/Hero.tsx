@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
   });
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full overflow-hidden">
       {/* Animated SVG background */}
      
 
@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
                   </span>
                 </h1>
 
-                <h1 className="font-black text-[23px] sm:text-[36px] lg:text-[40px] leading-tight">
+                <h1 className="font-black text-[20px]  lg:text-[40px] leading-tight">
                   {/* Aurora gradient text */}
                   <span className="bg-gradient-to-r text-center from-[#7c3aed] via-[#22d3ee] to-[#f472b6] bg-clip-text text-transparent">
                     ✨{text}
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
 
           {/* RIGHT: 3D computer canvas (taller, not absolutely positioned) */}
           <div className="lg:flex-[0.5] w-full">
-            <div className="relative w-full h-[460px] lg:h-[640px]">
+            <div className="relative w-full h-[390px] lg:h-[640px]">
               {/* no absolute/overflow-hidden so the model can sit high */}
               <ComputersCanvas />
             </div>

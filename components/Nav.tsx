@@ -2,14 +2,14 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
-export default function Nav(){
+export default function Nav() {
   return (
-    <header className="w-full top-0 z-50 ">
-      <div className="container-pg py-4">
+    <header className="w-full relative">
+      <div className="container-pg relative py-4">
         <div className="glass  px-4 sm:px-6 py-3 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg"
-                 style={{ background: "linear-gradient(135deg, var(--success), var(--secondary))" }}/>
+              style={{ background: "linear-gradient(135deg, var(--success), var(--secondary))" }} />
             <span className="text-lg sm:text-xl font-extrabold h-aurora">Sunil</span>
           </Link>
 
@@ -20,8 +20,8 @@ export default function Nav(){
           </nav>
 
           <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <a href="#contact" className="btn btn-primary">CV 📜</a>
+            {/* <ThemeToggle /> */}
+            <a className="btn btn-primary">CV 📜</a>
           </div>
         </div>
       </div>
