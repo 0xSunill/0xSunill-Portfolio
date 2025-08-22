@@ -80,7 +80,8 @@ body {
 
 /* Glass & card */
 .glass {
-  background: var(--glass); /* rgba(..., 0.06) by default */
+  background: var(--glass);
+  /* rgba(..., 0.06) by default */
   backdrop-filter: blur(28px) saturate(120%);
   -webkit-backdrop-filter: blur(28px) saturate(120%);
   border: 1px solid var(--border);
@@ -89,10 +90,14 @@ body {
 }
 
 /* nav-only: even stronger blur & a touch more opacity */
+/* nav-only: even stronger blur & a touch more opacity */
 .nav-glass {
-  background: rgba(11, 16, 32, 0.18);              /* slightly more see-through */
-  backdrop-filter: blur(40px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(140%) !important;
+  background: rgba(11, 16, 32, 0.45);  /* stronger opacity, was 0.18 */
+  backdrop-filter: blur(60px) saturate(180%) !important; 
+  -webkit-backdrop-filter: blur(60px) saturate(180%) !important;
+  border: 1px solid rgba(255,255,255,0.08); /* subtle border */
+  border-radius: 16px; /* smooth corners */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35); /* subtle shadow for depth */
   will-change: backdrop-filter;
 }
 
@@ -268,7 +273,7 @@ body {
 }
 
 :root[data-theme="light"] .hero-bg {
-  filter: invert(1) hue-rotate(29deg) brightness(.9);
+  filter: invert(1) hue-rotate(29deg) brightness(1);
 }
 
 
@@ -283,44 +288,68 @@ body {
 
 /* === Aurora Skill Badge === */
 .skill-badge {
-  width: 112px; height: 112px; position: relative; border-radius: 24px;
-  background: rgba(255,255,255,.04);
+  width: 112px;
+  height: 112px;
+  position: relative;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, .04);
   border: 1px solid rgba(124, 131, 168, .18);
-  box-shadow: 0 12px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
-  display: grid; place-items: center; overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .05);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
   transition: transform .18s ease, box-shadow .25s ease;
 }
-.skill-badge:hover { box-shadow: 0 18px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(124,58,237,.25) inset }
+
+.skill-badge:hover {
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .45), 0 0 0 1px rgba(124, 58, 237, .25) inset
+}
+
 .skill-badge__ring {
-  content:""; position:absolute; inset:-1px; border-radius:24px;
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
   background: linear-gradient(135deg, #7c3aed, #22d3ee, #f472b6);
-  opacity:.65;
+  opacity: .65;
   -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  padding:1px; pointer-events:none;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
 }
+
 .skill-badge__inner {
-  width: 86px; height: 86px; border-radius: 18px;
-  background: radial-gradient(120% 120% at 30% 10%, rgba(255,255,255,.12), rgba(255,255,255,.02));
-  display: grid; place-items: center; position: relative;
+  width: 86px;
+  height: 86px;
+  border-radius: 18px;
+  background: radial-gradient(120% 120% at 30% 10%, rgba(255, 255, 255, .12), rgba(255, 255, 255, .02));
+  display: grid;
+  place-items: center;
+  position: relative;
 }
-.skill-badge__img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,.35)); }
+
+.skill-badge__img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35));
+}
 
 /* flashlight effect  */
 .skill-badge__flash {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(
-    circle at var(--mx, 50%) var(--my, 50%),
-    rgba(255, 255, 255, 0.22),
-    rgba(255, 255, 255, 0) 60%
-  );
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, 0.22),
+      rgba(255, 255, 255, 0) 60%);
   opacity: 0;
   mix-blend-mode: screen;
   pointer-events: none;
   transition: opacity 0.25s ease;
 }
+
 .skill-badge:hover .skill-badge__flash {
   opacity: 1;
 }
@@ -346,20 +375,27 @@ body {
   filter: blur(60px);
   opacity: 0.35;
   background:
-    radial-gradient(40% 40% at 20% 40%, rgba(124,58,237,.45), transparent 60%),
-    radial-gradient(35% 35% at 80% 30%, rgba(34,211,238,.45), transparent 60%),
-    radial-gradient(45% 45% at 60% 80%, rgba(244,114,182,.40), transparent 60%);
+    radial-gradient(40% 40% at 20% 40%, rgba(124, 58, 237, .45), transparent 60%),
+    radial-gradient(35% 35% at 80% 30%, rgba(34, 211, 238, .45), transparent 60%),
+    radial-gradient(45% 45% at 60% 80%, rgba(244, 114, 182, .40), transparent 60%);
   animation: auroraFloat 18s ease-in-out infinite alternate;
 }
+
 .projects-aurora::after {
   inset: auto -10% -10% -10%;
   height: 60%;
   animation-duration: 22s;
   opacity: 0.28;
 }
+
 @keyframes auroraFloat {
-  0%   { transform: translateY(-10px) scale(1); }
-  100% { transform: translateY(10px)  scale(1.05); }
+  0% {
+    transform: translateY(-10px) scale(1);
+  }
+
+  100% {
+    transform: translateY(10px) scale(1.05);
+  }
 }
 
 /* Mouse-follow spotlight (CSS vars: --mx/--my are percentages) */
@@ -368,23 +404,24 @@ body {
   inset: 0;
   --mx: 50%;
   --my: 35%;
-  mask-image: radial-gradient(24rem 24rem at var(--mx) var(--my), rgba(0,0,0,0.9), transparent 70%);
-  -webkit-mask-image: radial-gradient(24rem 24rem at var(--mx) var(--my), rgba(0,0,0,0.9), transparent 70%);
+  mask-image: radial-gradient(24rem 24rem at var(--mx) var(--my), rgba(0, 0, 0, 0.9), transparent 70%);
+  -webkit-mask-image: radial-gradient(24rem 24rem at var(--mx) var(--my), rgba(0, 0, 0, 0.9), transparent 70%);
   background:
-    radial-gradient(20rem 20rem at var(--mx) var(--my), rgba(124,58,237,.18), transparent 70%),
-    radial-gradient(24rem 24rem at calc(var(--mx) + 10%) calc(var(--my) + 6%), rgba(34,211,238,.14), transparent 75%),
-    radial-gradient(22rem 22rem at calc(var(--mx) - 8%) calc(var(--my) - 8%), rgba(244,114,182,.14), transparent 75%);
+    radial-gradient(20rem 20rem at var(--mx) var(--my), rgba(124, 58, 237, .18), transparent 70%),
+    radial-gradient(24rem 24rem at calc(var(--mx) + 10%) calc(var(--my) + 6%), rgba(34, 211, 238, .14), transparent 75%),
+    radial-gradient(22rem 22rem at calc(var(--mx) - 8%) calc(var(--my) - 8%), rgba(244, 114, 182, .14), transparent 75%);
   transition: mask-position .2s ease, -webkit-mask-position .2s ease;
 }
 
 /* Card container with conic glow border */
 .projects-card {
   position: relative;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 1rem;
   overflow: hidden;
   isolation: isolate;
 }
+
 .projects-card .projects-border {
   position: absolute;
   inset: -1px;
@@ -392,10 +429,10 @@ body {
   padding: 1px;
   background:
     conic-gradient(from 180deg at 50% 50%,
-      rgba(124,58,237,.65),
-      rgba(34,211,238,.65),
-      rgba(244,114,182,.65),
-      rgba(124,58,237,.65));
+      rgba(124, 58, 237, .65),
+      rgba(34, 211, 238, .65),
+      rgba(244, 114, 182, .65),
+      rgba(124, 58, 237, .65));
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -404,6 +441,7 @@ body {
   opacity: .35;
   transition: opacity .3s ease, filter .3s ease;
 }
+
 .projects-card:hover .projects-border {
   opacity: .85;
   filter: blur(.3px);
@@ -414,12 +452,13 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(120deg, transparent 0%, rgba(255,255,255,.5) 20%, transparent 40%);
+    linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, .5) 20%, transparent 40%);
   transform: translateX(-150%) skewX(-12deg);
   transition: transform .8s ease;
   mix-blend-mode: screen;
   opacity: .25;
 }
+
 .projects-card:hover .projects-shine {
   transform: translateX(120%) skewX(-12deg);
 }
@@ -428,29 +467,35 @@ body {
 .skeleton {
   position: relative;
   overflow: hidden;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
 }
+
 .skeleton::after {
   content: "";
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,255,255,.18) 50%,
-    transparent 100%);
+      transparent 0%,
+      rgba(255, 255, 255, .18) 50%,
+      transparent 100%);
   animation: shimmer 1.2s infinite;
 }
+
 @keyframes shimmer {
-  100% { transform: translateX(100%); }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .projects-aurora::before,
   .projects-aurora::after {
     animation: none !important;
   }
+
   .projects-shine,
   .skeleton::after {
     animation: none !important;
@@ -459,8 +504,9 @@ body {
 
 
 /* prevent any off-screen effects from creating a horizontal scrollbar */
-html, body {
+html,
+body {
   max-width: 100%;
-  overflow-x: clip; /* (modern) or use hidden if you need wider support */
+  overflow-x: clip;
+  /* (modern) or use hidden if you need wider support */
 }
-

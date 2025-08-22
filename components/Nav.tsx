@@ -4,9 +4,9 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Nav(){
   return (
-    <header className="w-full sticky top-0 z-50">
+    <header className="w-full top-0 z-50 ">
       <div className="container-pg py-4">
-        <div className="glass px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div className="glass  px-4 sm:px-6 py-3 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg"
                  style={{ background: "linear-gradient(135deg, var(--success), var(--secondary))" }}/>
