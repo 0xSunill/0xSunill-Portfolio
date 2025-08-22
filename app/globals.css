@@ -56,6 +56,7 @@
   box-sizing: border-box
 }
 
+
 html,
 body {
   height: 100%
@@ -455,3 +456,11 @@ body {
     animation: none !important;
   }
 }
+
+
+/* prevent any off-screen effects from creating a horizontal scrollbar */
+html, body {
+  max-width: 100%;
+  overflow-x: clip; /* (modern) or use hidden if you need wider support */
+}
+
