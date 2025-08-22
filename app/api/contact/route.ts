@@ -24,8 +24,8 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "Portfolio <noreply@your-domain.com>",
-      to: ["you@your-domain.com"], // change this
-      reply_to: email,
+      to: ["sunday7637@gmail.com"], // change this
+      replyTo: email,
       subject,
       text,
     });

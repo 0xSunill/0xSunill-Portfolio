@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import SkillBadge from "./SkillBadge";
-
+import Image from "next/image";
 const tech = [
     "solana", "rust", "anchor", "nextjs", "html", "css", "javascript", "typescript", "reactjs",
     "redux", "tailwind", "nodejs", "mongodb", "git", "solidity", "c++", "docker",
@@ -12,9 +12,11 @@ export default function Skills() {
         <section id="skills" className="relative py-16 sm:py-24">
             {/* background svg */}
             <div className="absolute inset-0 -z-10">
-                <img
+                <Image
                     src="/skills-bg.svg"  // <-- make sure this file is in /public/assets/
                     alt=""
+                    fill
+                    priority
                     className="hero-bg w-full h-full object-cover opacity-90 pointer-events-none select-none"
                 />
             </div>

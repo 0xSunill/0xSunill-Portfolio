@@ -6,7 +6,6 @@ import CanvasLoader from "../Loader";
 
 const Earth = () => {
   const earth = useGLTF("/planet/scene.gltf"); // if you add this model later, it will "just work"
-  // @ts-expect-error drei typing is lenient for GLTF primitives
   return <primitive object={earth.scene} scale={1.8} position-y={0} rotation-y={0} />;
 };
 

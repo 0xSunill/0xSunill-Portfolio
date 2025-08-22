@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { EarthCanvas } from "./canvas";
-
+import Image from "next/image";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Contact() {
@@ -49,9 +49,11 @@ export default function Contact() {
             {/* backgrounds (behind everything) */}
             <div className="absolute inset-0 -z-10 pointer-events-none select-none">
                 {/* swap path if your file lives under /assets */}
-                <img
+                <Image
                     src="/movingparticle-bg.svg"
                     alt=""
+                    fill
+                    priority
                     className="w-full h-full object-cover opacity-70"
                 />
             </div>

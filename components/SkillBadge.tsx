@@ -4,12 +4,12 @@ import Image from "next/image";
 import React from "react";
 
 export default function SkillBadge({ name }: { name: string }) {
-    const fileMap: Record<string, string> = {
-        "c++": "cpp",           // rename file to cpp.png (recommended)
-        // add mappings if your file names differ from display names
-    };
+    // const fileMap: Record<string, string> = {
+    //     "c++": "cpp",           // rename file to cpp.png (recommended)
+    //     // add mappings if your file names differ from display names
+    // };
 
-    const file = fileMap[name] ?? name;
+    // const file = fileMap[name] ?? name;
     const src = `/assets/tech/${encodeURIComponent(name)}.png`;
     const ref = React.useRef<HTMLDivElement>(null);
 

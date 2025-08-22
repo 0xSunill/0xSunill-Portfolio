@@ -4,16 +4,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { projects } from "../constants/projects";
-type Project = {
-    id: string;
-    type: "web3" | "web";
-    title: string;
-    blurb: string;
-    tags: string[];
-    image: string;
-    live?: string;
-    repo?: string;
-};
 
 
 const EASE = [0.22, 1, 0.36, 1] as const;
