@@ -1,16 +1,25 @@
+// app/api/contact/route.ts
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY); // set in .env
+export const runtime = "nodejs";        // <- important
+export const dynamic = "force-dynamic"; // ok for API
 
 export async function POST(req: Request) {
   try {
     const { name, email, kind, message, budget } = await req.json();
 
-    // minimal validation server-side
     if (!name || !email || !message) {
       return NextResponse.json({ ok: false, error: "Missing fields" }, { status: 400 });
     }
+
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("RESEND_API_KEY missing");
+      return NextResponse.json({ ok: false, error: "Email service not configured" }, { status: 500 });
+    }
+
+    const resend = new Resend(apiKey);
 
     const subject = `New contact: ${kind || "general"} — ${name}`;
     const text = [
@@ -20,19 +29,29 @@ export async function POST(req: Request) {
       budget ? `Budget: ${budget}` : null,
       "",
       message,
-    ].filter(Boolean).join("\n");
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-    await resend.emails.send({
-      from: "Portfolio <noreply@your-domain.com>",
-      to: ["sunday7637@gmail.com"], // change this
+    const from = process.env.MAIL_FROM || "onboarding@resend.dev";   // use this in dev
+    const to = process.env.MAIL_TO || "sunilre6776@gmail.com";
+
+    const { data, error } = await resend.emails.send({
+      from,
+      to,                   // can be string or string[]
       replyTo: email,
       subject,
       text,
     });
 
-    return NextResponse.json({ ok: true });
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json({ ok: false, error: String(error) }, { status: 500 });
+    }
+
+    return NextResponse.json({ ok: true, id: data?.id });
   } catch (e) {
-    console.error(e);
-    return NextResponse.json({ ok: false }, { status: 500 });
+    console.error("Contact route error:", e);
+    return NextResponse.json({ ok: false, error: "Unexpected server error" }, { status: 500 });
   }
 }
