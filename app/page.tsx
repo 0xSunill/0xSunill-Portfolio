@@ -1,4 +1,6 @@
 import About from "@/components/About";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/skills";
@@ -18,6 +20,8 @@ export default function Home() {
       <Skills />
 
       <Projects />
+      <Contact />
+      <Footer />
       {/* later sections: wrap with <section className="container-pg mt-10"><div className="card p-6 sm:p-10">...</div></section> */}
 
     </main>

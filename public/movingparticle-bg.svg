@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- glow dot -->
+    <radialGradient id="dot" r="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1"/>
+    </filter>
+  </defs>
+
+  <!-- BACK LAYER -->
+  <g opacity="0.35">
+    <g>
+      <circle cx="200" cy="150" r="1.5" fill="#7c3aed"/>
+      <circle cx="500" cy="250" r="1.5" fill="#22d3ee"/>
+      <circle cx="800" cy="200" r="1.5" fill="#f472b6"/>
+      <circle cx="1100" cy="180" r="1.5" fill="#22d3ee"/>
+      <circle cx="300" cy="600" r="1.5" fill="#f472b6"/>
+      <circle cx="900" cy="620" r="1.5" fill="#7c3aed"/>
+      <animateTransform attributeName="transform" type="translate"
+        values="0 0; -120 0; 0 0" dur="25s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <!-- MID LAYER -->
+  <g opacity="0.6">
+    <g>
+      <circle cx="300" cy="300" r="2" fill="#22d3ee"/>
+      <circle cx="600" cy="340" r="2" fill="#7c3aed"/>
+      <circle cx="900" cy="320" r="2" fill="#f472b6"/>
+      <circle cx="1200" cy="360" r="2" fill="#22d3ee"/>
+      <circle cx="400" cy="720" r="2" fill="#f472b6"/>
+      <circle cx="1000" cy="680" r="2" fill="#7c3aed"/>
+      <animateTransform attributeName="transform" type="translate"
+        values="0 0; -180 0; 0 0" dur="18s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <!-- FRONT LAYER -->
+  <g opacity="0.9" filter="url(#soft)">
+    <g>
+      <circle cx="260" cy="220" r="3" fill="#7c3aed">
+        <animate attributeName="cx" values="260;270;255;260" dur="6s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="220;214;226;220" dur="7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="640" cy="280" r="3" fill="#22d3ee">
+        <animate attributeName="cx" values="640;650;630;640" dur="6.5s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="280;272;288;280" dur="7.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1040" cy="320" r="3" fill="#f472b6">
+        <animate attributeName="cx" values="1040;1052;1030;1040" dur="7s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="320;312;328;320" dur="6.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="460" cy="700" r="3" fill="#22d3ee">
+        <animate attributeName="cx" values="460;470;450;460" dur="7s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="700;692;708;700" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1080" cy="660" r="3" fill="#7c3aed">
+        <animate attributeName="cx" values="1080;1092;1068;1080" dur="6.8s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="660;652;668;660" dur="7.2s" repeatCount="indefinite"/>
+      </circle>
+      <animateTransform attributeName="transform" type="translate"
+        values="0 0; -240 0; 0 0" dur="12s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      animate, animateTransform { display: none }
+    }
+  </style>
+</svg>
