@@ -269,3 +269,57 @@ body {
 :root[data-theme="light"] .hero-bg {
   filter: invert(1) hue-rotate(29deg) brightness(.9);
 }
+
+
+
+
+
+
+
+
+
+
+
+/* === Aurora Skill Badge === */
+.skill-badge {
+  width: 112px; height: 112px; position: relative; border-radius: 24px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(124, 131, 168, .18);
+  box-shadow: 0 12px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+  display: grid; place-items: center; overflow: hidden;
+  transition: transform .18s ease, box-shadow .25s ease;
+}
+.skill-badge:hover { box-shadow: 0 18px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(124,58,237,.25) inset }
+.skill-badge__ring {
+  content:""; position:absolute; inset:-1px; border-radius:24px;
+  background: linear-gradient(135deg, #7c3aed, #22d3ee, #f472b6);
+  opacity:.65;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  padding:1px; pointer-events:none;
+}
+.skill-badge__inner {
+  width: 86px; height: 86px; border-radius: 18px;
+  background: radial-gradient(120% 120% at 30% 10%, rgba(255,255,255,.12), rgba(255,255,255,.02));
+  display: grid; place-items: center; position: relative;
+}
+.skill-badge__img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,.35)); }
+
+/* flashlight effect  */
+.skill-badge__flash {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.skill-badge:hover .skill-badge__flash {
+  opacity: 1;
+}

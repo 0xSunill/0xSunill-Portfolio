@@ -1,0 +1,55 @@
+<!-- Solana — Neon Lattice (transparent, lines-only) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="solStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#34d399"/>
+      <animateTransform attributeName="gradientTransform" type="rotate" from="0 0.5 0.5" to="360 0.5 0.5" dur="26s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke="url(#solStroke)" stroke-width="2" stroke-linecap="round">
+    <!-- diagonal wave band 1 -->
+    <path opacity="0.9">
+      <animate attributeName="d" dur="18s" repeatCount="indefinite" values="
+        M-100,200 C240,140 480,300 760,220 1040,140 1320,300 1540,220
+        M-100,200;
+        M-100,220 C240,260 480,160 760,240 1040,320 1320,160 1540,240
+        M-100,220;
+        M-100,200 C240,140 480,300 760,220 1040,140 1320,300 1540,220
+        M-100,200"/>
+      <animate attributeName="stroke-dasharray" values="8,20;18,30;8,20" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" values="0;-260;0" dur="12s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate" from="-20 720 450" to="-20 720 450" dur="1s" repeatCount="1" fill="freeze"/>
+    </path>
+
+    <!-- diagonal wave band 2 -->
+    <path opacity="0.6">
+      <animate attributeName="d" dur="20s" repeatCount="indefinite" values="
+        M-100,420 C240,360 520,520 800,440 1080,360 1360,520 1540,460
+        M-100,420;
+        M-100,440 C240,520 520,360 800,460 1080,560 1360,360 1540,420
+        M-100,440;
+        M-100,420 C240,360 520,520 800,440 1080,360 1360,520 1540,460
+        M-100,420"/>
+      <animate attributeName="stroke-dasharray" values="10,24;22,36;10,24" dur="14s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" values="0;-340;0" dur="14s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate" from="-20 720 450" to="-20 720 450" dur="1s" repeatCount="1" fill="freeze"/>
+    </path>
+
+    <!-- diagonal wave band 3 -->
+    <path opacity="0.35">
+      <animate attributeName="d" dur="22s" repeatCount="indefinite" values="
+        M-100,640 C220,560 520,760 820,680 1120,600 1420,760 1540,700
+        M-100,640;
+        M-100,660 C220,740 520,560 820,700 1120,820 1420,560 1540,640
+        M-100,660;
+        M-100,640 C220,560 520,760 820,680 1120,600 1420,760 1540,700
+        M-100,640"/>
+      <animate attributeName="stroke-dasharray" values="12,28;26,40;12,28" dur="16s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" values="0;-420;0" dur="16s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate" from="-20 720 450" to="-20 720 450" dur="1s" repeatCount="1" fill="freeze"/>
+    </path>
+  </g>
+</svg>
