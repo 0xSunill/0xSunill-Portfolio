@@ -1,0 +1,86 @@
+<!-- Aurora Waves — seamless, looping, JS-free animated background -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Base colors (tweak stops for your palette) -->
+    <linearGradient id="strokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+      <animateTransform attributeName="gradientTransform" type="rotate" from="0 0.5 0.5" to="360 0.5 0.5" dur="24s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <!-- Soft glow behind lines -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity=".55"/>
+      <stop offset="50%" stop-color="#22d3ee" stop-opacity=".25"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Blur for glow circles -->
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="60" edgeMode="duplicate"/>
+    </filter>
+  </defs>
+
+  <!-- Background fill (optional, you can remove if your page already has a bg) -->
+  <rect width="100%" height="100%" fill="#0b0f1d"/>
+
+  <!-- Moving glow blobs (very subtle) -->
+  <g filter="url(#blur)" opacity=".55">
+    <circle cx="250" cy="180" r="220" fill="url(#glow)">
+      <animate attributeName="cx" values="200;300;220;250" dur="22s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="160;220;140;180" dur="24s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1180" cy="200" r="260" fill="url(#glow)">
+      <animate attributeName="cx" values="1150;1220;1180" dur="26s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="220;160;200" dur="28s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="900" cy="730" r="260" fill="url(#glow)">
+      <animate attributeName="cx" values="860;920;900" dur="25s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="700;760;730" dur="23s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Layered animated wave paths -->
+  <!-- <g fill="none" stroke="url(#strokeGrad)" stroke-width="2"> -->
+    <!-- Each path gently morphs between 3 shapes -->
+    <!-- <path opacity=".9">
+      <animate attributeName="d" dur="18s" repeatCount="indefinite"
+        values="
+          M0,220 C 240,140 480,300 720,220 960,140 1200,300 1440,220
+          L1440,0 0,0 Z;
+          M0,220 C 240,260 480,160 720,240 960,320 1200,160 1440,240
+          L1440,0 0,0 Z;
+          M0,220 C 240,140 480,300 720,220 960,140 1200,300 1440,220
+          L1440,0 0,0 Z"/>
+      <animate attributeName="stroke-dasharray" values="1,8;4,10;1,8" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" values="0;-200;0" dur="12s" repeatCount="indefinite"/>
+    </path>
+
+    <path opacity=".6">
+      <animate attributeName="d" dur="20s" repeatCount="indefinite"
+        values="
+          M0,420 C 260,360 520,520 780,420 1040,320 1300,520 1440,460
+          L1440,300 0,300 Z;
+          M0,420 C 260,500 520,360 780,460 1040,560 1300,360 1440,420
+          L1440,300 0,300 Z;
+          M0,420 C 260,360 520,520 780,420 1040,320 1300,520 1440,460
+          L1440,300 0,300 Z"/>
+      <animate attributeName="stroke-dasharray" values="2,10;6,12;2,10" dur="14s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" values="0;-300;0" dur="14s" repeatCount="indefinite"/>
+    </path>
+
+    <path opacity=".35">
+      <animate attributeName="d" dur="22s" repeatCount="indefinite"
+        values="
+          M0,640 C 220,560 520,760 760,640 1000,520 1240,760 1440,700
+          L1440,520 0,520 Z;
+          M0,640 C 220,720 520,560 760,680 1000,800 1240,560 1440,640
+          L1440,520 0,520 Z;
+          M0,640 C 220,560 520,760 760,640 1000,520 1240,760 1440,700
+          L1440,520 0,520 Z"/>
+      <animate attributeName="stroke-dasharray" values="3,14;8,16;3,14" dur="16s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-dashoffset" values="0;-400;0" dur="16s" repeatCount="indefinite"/>
+    </path>
+  </g> -->
+</svg>

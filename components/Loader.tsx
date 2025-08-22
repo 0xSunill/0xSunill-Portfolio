@@ -1,5 +1,3 @@
-// components/Loader.tsx
-
 import { Html, useProgress } from "@react-three/drei";
 
 const CanvasLoader = () => {
@@ -19,7 +17,7 @@ const CanvasLoader = () => {
       <p
         style={{
           fontSize: 14,
-          color: "#1E1B18", // Changed color to be visible on light background
+          color: "var(--ink)", // readable on both themes
           fontWeight: 800,
           marginTop: 40,
         }}

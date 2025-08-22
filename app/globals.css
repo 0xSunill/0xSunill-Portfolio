@@ -79,12 +79,20 @@ body {
 
 /* Glass & card */
 .glass {
-  background: var(--glass);
-  backdrop-filter: blur(14px) saturate(120%);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  background: var(--glass); /* rgba(..., 0.06) by default */
+  backdrop-filter: blur(28px) saturate(120%);
+  -webkit-backdrop-filter: blur(28px) saturate(120%);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
+}
+
+/* nav-only: even stronger blur & a touch more opacity */
+.nav-glass {
+  background: rgba(11, 16, 32, 0.18);              /* slightly more see-through */
+  backdrop-filter: blur(40px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(140%) !important;
+  will-change: backdrop-filter;
 }
 
 .card {
@@ -254,10 +262,10 @@ body {
 }
 
 
-hero-bg {
+.hero-bg {
   filter: brightness(1) contrast(1.05) saturate(1.2);
 }
 
 :root[data-theme="light"] .hero-bg {
-  filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  filter: invert(1) hue-rotate(29deg) brightness(.9);
 }

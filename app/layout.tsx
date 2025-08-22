@@ -16,6 +16,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       {/* remove data-theme for dark by default; set to "light" to force light */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+
+        <div className="fixed inset-0 -z-10">
+          <img
+            src="/transparent.svg"
+            alt=""
+            className="hero-bg w-full h-full object-cover opacity-90 pointer-events-none select-none"
+          />
+        </div>
         <Nav />
         {children}
       </body>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <!-- Dark base -->
+    <radialGradient id="aurora" cx="30%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#1a1f35" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f1d" />
+    </radialGradient>
+
+    <!-- Blue glow -->
+    <radialGradient id="blue" cx="80%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3">
+        <animate attributeName="stop-opacity" values="0.15;0.35;0.15" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+
+    <!-- Purple glow -->
+    <radialGradient id="purple" cx="20%" cy="80%" r="70%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25">
+        <animate attributeName="stop-opacity" values="0.1;0.3;0.1" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+
+    <!-- Pink glow -->
+    <radialGradient id="pink" cx="50%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.2">
+        <animate attributeName="stop-opacity" values="0.05;0.25;0.05" dur="12s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+  </defs>
+
+  <!-- Base -->
+  <rect width="100%" height="100%" fill="url(#aurora)" />
+
+  <!-- Animated glows -->
+  <rect width="100%" height="100%" fill="url(#blue)" />
+  <rect width="100%" height="100%" fill="url(#purple)" />
+  <rect width="100%" height="100%" fill="url(#pink)" />
+</svg>
