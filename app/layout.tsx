@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             className="hero-bg w-full h-full object-cover opacity-90 pointer-events-none select-none"
           />
         </div>
-      
+        <div className="bg-noise" />
         {children}
       </body>
     </html>

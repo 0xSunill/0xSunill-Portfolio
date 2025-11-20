@@ -2,9 +2,21 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { EarthCanvas } from "./canvas";
+// import { EarthCanvas } from "./canvas";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+
+
+const EarthCanvas = dynamic(() => import("./canvas/Earth"), {
+    ssr: false,
+    loading: () => <div className="h-[320px] w-full flex items-center justify-center text-white/20">Loading 3D...</div>
+});
+
+
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+
 
 export default function Contact() {
     const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -203,7 +215,7 @@ export default function Contact() {
                     <div className="relative">
                         <div className=""
                             style={{ borderColor: "var(--border)" }}>
-                            <div className="h-[320px] sm:h-[420px] lg:h-[540px]">
+                            <div className="relative h-[320px] sm:h-[420px] lg:h-[540px] w-full overflow-hidden ">
                                 <EarthCanvas />
                             </div>
                         </div>
