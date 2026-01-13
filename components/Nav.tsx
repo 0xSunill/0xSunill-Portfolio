@@ -21,7 +21,16 @@ export default function Nav() {
 
           <div className="flex items-center gap-3">
             {/* <ThemeToggle /> */}
-            <a className="btn btn-primary">CV 📜</a>
+      
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Resume 📜
+            </a>
           </div>
         </div>
       </div>
