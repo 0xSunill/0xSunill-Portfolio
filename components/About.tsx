@@ -68,20 +68,16 @@ export default function About() {
 
         {/* Shell */}
         <div className="glass p-6 sm:p-8 relative overflow-hidden">
-          {/* background blobs */}
-          <motion.div
+          {/* background blobs — replaced with CSS animation (no JS per-frame cost) */}
+          <div
             aria-hidden
-            className="pointer-events-none absolute -top-24 -left-20 h-64 w-64 rounded-full blur-3xl opacity-30"
+            className="pointer-events-none absolute -top-24 -left-20 h-64 w-64 rounded-full blur-3xl opacity-25 blob-float"
             style={{ background: "linear-gradient(135deg,#7c3aed,#22d3ee)" }}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
-          <motion.div
+          <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-28 -right-20 h-72 w-72 rounded-full blur-3xl opacity-25"
+            className="pointer-events-none absolute -bottom-28 -right-20 h-72 w-72 rounded-full blur-3xl opacity-20 blob-float-reverse"
             style={{ background: "linear-gradient(135deg,#f472b6,#22d3ee)" }}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           />
 
           {/* Bio */}
@@ -92,12 +88,12 @@ export default function About() {
             viewport={{ once: true }}
             className="relative text-lg sm:text-xl leading-relaxed text-[color:var(--muted)]"
           >
-            I’m <span className="font-semibold text-foreground">Sunil Reddy</span> — a full-stack{" "}
+            I&apos;m <span className="font-semibold text-foreground">Sunil Reddy</span> — a full-stack{" "}
             <span className="text-foreground">web</span> and{" "}
             <span className="text-foreground">blockchain</span> developer. I build scalable{" "}
             <span className="text-foreground">Solana</span> dApps, write secure{" "}
             <span className="text-foreground">Rust</span> programs, and create smooth{" "}
-            <span className="text-foreground">Web3</span> experiences. I’m equally passionate about
+            <span className="text-foreground">Web3</span> experiences. I&apos;m equally passionate about
             modern <span className="text-foreground">full-stack web development</span> with{" "}
             <span className="text-foreground">Next.js</span> and contributing to{" "}
             <span className="text-foreground">open-source</span> projects that push the crypto
@@ -145,13 +141,11 @@ export default function About() {
                     {t.desc}
                   </p>
 
-                  {/* bottom glow */}
-                  <motion.span
+                  {/* bottom glow — CSS animation instead of framer-motion repeat:Infinity */}
+                  <span
                     aria-hidden
-                    className="absolute -bottom-10 -right-10 w-36 h-36 rounded-full blur-2xl opacity-25"
+                    className="absolute -bottom-10 -right-10 w-36 h-36 rounded-full blur-2xl opacity-20 glow-pulse"
                     style={{ background: t.grad }}
-                    animate={{ scale: [1, 1.08, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   />
                 </div>
               </motion.article>

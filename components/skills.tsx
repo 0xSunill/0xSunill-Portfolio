@@ -13,10 +13,9 @@ export default function Skills() {
             {/* background svg */}
             <div className="absolute inset-0 -z-10">
                 <Image
-                    src="/skills-bg.svg"  // <-- make sure this file is in /public/assets/
+                    src="/skills-bg.svg"
                     alt=""
                     fill
-                    priority
                     className="hero-bg w-full h-full object-cover opacity-90 pointer-events-none select-none"
                 />
             </div>

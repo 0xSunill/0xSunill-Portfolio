@@ -65,7 +65,6 @@ export default function Contact() {
                     src="/movingparticle-bg.svg"
                     alt=""
                     fill
-                    priority
                     className="w-full h-full object-cover opacity-70"
                 />
             </div>
@@ -201,13 +200,11 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        {/* bottom glow pulse */}
-                        <motion.span
+                        {/* bottom glow — CSS animation, no framer-motion JS loop */}
+                        <span
                             aria-hidden
-                            className="pointer-events-none absolute -bottom-14 -right-12 w-40 h-40 rounded-full blur-2xl opacity-20"
+                            className="pointer-events-none absolute -bottom-14 -right-12 w-40 h-40 rounded-full blur-2xl opacity-20 glow-pulse"
                             style={{ background: "linear-gradient(135deg, #7c3aed, #22d3ee, #f472b6)" }}
-                            animate={{ scale: [1, 1.06, 1] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                         />
                     </motion.form>
 

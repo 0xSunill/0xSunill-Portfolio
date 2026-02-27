@@ -2,7 +2,18 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTypewriter } from "react-simple-typewriter";
-import { ComputersCanvas } from "./canvas";
+import dynamic from "next/dynamic";
+
+// Lazy-load the heavy WebGL canvas — it's code-split out of the initial bundle
+// and only starts loading after the HTML/CSS paint, so it never blocks LCP.
+const ComputersCanvas = dynamic(() => import("./canvas/Computers"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full w-full flex items-center justify-center text-white/20 text-sm">
+      Loading 3D…
+    </div>
+  ),
+});
 
 const Hero: React.FC = () => {
   const [text] = useTypewriter({
@@ -13,9 +24,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative w-full overflow-hidden">
-      {/* Animated SVG background */}
-     
-
       {/* Content row: text left, canvas right */}
       <div className="relative z-10 h-full mx-auto max-w-7xl px-6 sm:px-10">
         {/* top-aligned row */}

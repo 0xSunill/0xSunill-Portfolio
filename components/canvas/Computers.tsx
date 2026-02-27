@@ -61,9 +61,9 @@ const ComputersCanvas = () => {
     <Canvas
       frameloop="demand"
       shadows
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      performance={{ min: 0.5 }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />

@@ -16,20 +16,17 @@ const TABS: Array<{ key: "web3" | "web"; label: string }> = [
 export default function Projects() {
     const [active, setActive] = useState<"web3" | "web">("web3");
     const [visible, setVisible] = useState(PAGE_SIZE);
-    const [loading, setLoading] = useState(true); // skeleton on first paint + tab changes
-    const [hoverXY, setHoverXY] = useState({ x: 0, y: 0 });
+    const [loading, setLoading] = useState(true);
     const spotRef = useRef<HTMLDivElement>(null);
 
-    // Spotlight mouse tracker (+ a tiny parallax hint)
+    // Spotlight mouse tracker — mutates CSS custom props directly on the DOM element,
+    // NO React state update → zero re-renders on mousemove.
     const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const el = spotRef.current;
         if (!el) return;
         const r = el.getBoundingClientRect();
-        const xPct = ((e.clientX - r.left) / r.width) * 100;
-        const yPct = ((e.clientY - r.top) / r.height) * 100;
-        el.style.setProperty("--mx", `${xPct}%`);
-        el.style.setProperty("--my", `${yPct}%`);
-        setHoverXY({ x: (xPct - 50) / 50, y: (yPct - 50) / 50 });
+        el.style.setProperty("--mx", `${((e.clientX - r.left) / r.width) * 100}%`);
+        el.style.setProperty("--my", `${((e.clientY - r.top) / r.height) * 100}%`);
     };
 
     // filter by tab
@@ -38,7 +35,7 @@ export default function Projects() {
     // show a skeleton for a brief moment on initial load and when tab switches
     useEffect(() => {
         setLoading(true);
-        const t = setTimeout(() => setLoading(false), 500); // feel free to tweak duration
+        const t = setTimeout(() => setLoading(false), 500);
         return () => clearTimeout(t);
     }, [active]);
 
@@ -72,14 +69,13 @@ export default function Projects() {
             </div>
 
             <div className="mx-auto max-w-7xl px-6 sm:px-10">
-                {/* Title */}
+                {/* Title — removed hoverXY-based perspective transform (caused re-renders) */}
                 <motion.h2
                     initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.55, ease: EASE }}
                     className="text-3xl sm:text-4xl font-black leading-tight mb-8 text-center"
-                    style={{ transform: `perspective(800px) rotateX(${hoverXY.y * 1.2}deg)` }}
                 >
                     <span className="bg-gradient-to-r from-[#7c3aed] via-[#22d3ee] to-[#f472b6] bg-clip-text text-transparent">
                         Projects
@@ -152,9 +148,10 @@ export default function Projects() {
                                     initial="hidden"
                                     whileInView="show"
                                     viewport={{ once: true, amount: 0.2 }}
-                                    whileHover={{ y: -6, scale: 1.01, rotateX: hoverXY.y * 0.6, rotateY: -hoverXY.x * 0.8 }}
+                                    whileHover={{ y: -6, scale: 1.01 }}
                                     transition={{ type: "spring", stiffness: 300, damping: 28 }}
                                     className="group relative overflow-hidden rounded-2xl projects-card"
+                                    style={{ contain: "layout style" }}
                                 >
                                     {/* glow border */}
                                     <span aria-hidden className="projects-border" />
@@ -217,16 +214,13 @@ export default function Projects() {
                                         </div>
                                     </div>
 
-                                    {/* bottom glow pulse */}
-                                    <motion.span
+                                    {/* bottom glow — CSS animation, no framer-motion JS loop */}
+                                    <span
                                         aria-hidden
-                                        className="pointer-events-none absolute -bottom-14 -right-12 w-40 h-40 rounded-full blur-2xl opacity-20"
+                                        className="pointer-events-none absolute -bottom-14 -right-12 w-40 h-40 rounded-full blur-2xl opacity-20 glow-pulse"
                                         style={{
-                                            background:
-                                                "linear-gradient(135deg, #7c3aed, #22d3ee, #f472b6)",
+                                            background: "linear-gradient(135deg, #7c3aed, #22d3ee, #f472b6)",
                                         }}
-                                        animate={{ scale: [1, 1.06, 1] }}
-                                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                                     />
                                 </motion.article>
                             ))}
