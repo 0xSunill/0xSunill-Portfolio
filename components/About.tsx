@@ -1,13 +1,7 @@
 "use client";
 
 import { motion, type Variants, type Transition } from "framer-motion";
-
-type Tile = {
-  title: string;
-  desc: string;
-  emoji: string;
-  grad: string;
-};
+import { Code2, Blocks, Rocket, GraduationCap, Briefcase, Github, Twitter, Linkedin, ExternalLink } from "lucide-react";
 
 /** Framer-compatible easing (cubic-bezier) */
 const EASE: Transition["ease"] = [0.22, 1, 0.36, 1]; // easeOut-ish
@@ -21,31 +15,94 @@ const fade = (delay = 0): Variants => ({
   },
 });
 
+type Tile = {
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  grad: string;
+};
+
 const tiles: Tile[] = [
   {
-    title: "Web3 & Smart Contracts",
-    desc: "Solana-ready dApps and secure, testable contract architectures.",
-    emoji: "🧠",
-    grad: "linear-gradient(135deg, var(--grad-a), var(--grad-c))",
+    title: "Solana & DeFi Protocols",
+    desc: "AMMs, prediction markets, P2P atomic swaps, escrow systems — built and deployed on-chain with Rust & Anchor.",
+    icon: <Blocks size={28} />,
+    grad: "linear-gradient(135deg, #9945ff, #22d3ee)",
   },
   {
-    title: "Rust",
-    desc: "Fast, memory-safe systems and on-chain programs.",
-    emoji: "🦀",
-    grad: "linear-gradient(135deg, var(--grad-a), var(--grad-b))",
+    title: "Rust & On-Chain Programs",
+    desc: "PDAs, CPIs, SPL tokens, ATAs, WSOL, Token-2022 — deep experience with Solana's account model and program architecture.",
+    icon: <Code2 size={28} />,
+    grad: "linear-gradient(135deg, #f74b00, #fbbf24)",
   },
   {
-    title: "Solana Development",
-    desc: "Scalable programs, clients, and seamless crypto UX.",
-    emoji: "⚡",
-    grad: "linear-gradient(135deg, var(--grad-b), var(--grad-c))",
+    title: "Full-Stack Web Development",
+    desc: "Next.js, React, TypeScript, Node.js, PostgreSQL — end-to-end applications with modern frameworks and responsive UIs.",
+    icon: <Rocket size={28} />,
+    grad: "linear-gradient(135deg, #22d3ee, #34d399)",
   },
   {
-    title: "Web Development",
-    desc: "Full-stack apps with Next.js & TypeScript, built for speed.",
-    emoji: "💻",
-    grad: "linear-gradient(135deg, var(--grad-a), var(--grad-c))",
+    title: "Currently Exploring",
+    desc: "Async Rust, Tokio, Axum, real-time market data, low-latency systems, and DEX / trading infrastructure.",
+    icon: <GraduationCap size={28} />,
+    grad: "linear-gradient(135deg, #f472b6, #a78bfa)",
   },
+];
+
+type StatItem = {
+  value: string;
+  label: string;
+};
+
+const stats: StatItem[] = [
+  { value: "20+", label: "Solana dApps Built" },
+  { value: "10+", label: "Deployed Live" },
+  { value: "MCA", label: "Computer Applications" },
+  { value: "3+", label: "Years Building" },
+];
+
+type TimelineItem = {
+  role: string;
+  org: string;
+  period: string;
+  desc: string;
+  icon: React.ReactNode;
+};
+
+const timeline: TimelineItem[] = [
+  {
+    role: "Solana Developer Fellow",
+    org: "100xDevs — Solana School",
+    period: "2026",
+    desc: "Selected for a hands-on Solana builder program focused on Rust, Anchor, and on-chain application development.",
+    icon: <GraduationCap size={16} />,
+  },
+  {
+    role: "Web3 Research Intern",
+    org: "DYOR Research",
+    period: "Nov 2025 – Apr 2026",
+    desc: "Researched Web3 protocols, DeFi ecosystems, and crypto-market infrastructure.",
+    icon: <Briefcase size={16} />,
+  },
+  {
+    role: "Freelance Developer",
+    org: "Remote",
+    period: "May 2024 – Present",
+    desc: "Built and delivered full-stack web applications and Web3 dApps for startups.",
+    icon: <Briefcase size={16} />,
+  },
+];
+
+type SocialLink = {
+  icon: React.ReactNode;
+  href: string;
+  label: string;
+};
+
+const socials: SocialLink[] = [
+  { icon: <Github size={18} />, href: "https://github.com/0xSunill", label: "GitHub" },
+  { icon: <Twitter size={18} />, href: "https://twitter.com/0xSunill", label: "Twitter" },
+  { icon: <Linkedin size={18} />, href: "https://in.linkedin.com/in/karri-sunil-reddy-209249216", label: "LinkedIn" },
 ];
 
 export default function About() {
@@ -80,25 +137,64 @@ export default function About() {
             style={{ background: "linear-gradient(135deg,#f472b6,#22d3ee)" }}
           />
 
-          {/* Bio */}
-          <motion.p
-            variants={fade(0.05)}
+          {/* Bio + Socials */}
+          <div className="relative flex flex-col sm:flex-row sm:items-start gap-6">
+            <motion.div
+              variants={fade(0.05)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="flex-1"
+            >
+              <p className="text-lg sm:text-xl leading-relaxed text-[color:var(--muted)]">
+                I&apos;m <span className="font-semibold text-foreground">Karri Sunil Reddy</span> — a{" "}
+                <span className="text-foreground">Solana</span> and{" "}
+                <span className="text-foreground">Rust</span> developer focused on building{" "}
+                <span className="text-foreground">DeFi</span> and on-chain applications. I&apos;ve built and deployed an{" "}
+                <span className="text-foreground">AMM</span>, prediction market, P2P atomic swap protocol, token launch platform, and on-chain games using{" "}
+                <span className="text-foreground">Anchor</span> and Solana ecosystem tooling.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-[color:var(--muted)]">
+                Currently expanding into async{" "}
+                <span className="text-foreground">Rust</span>,{" "}
+                backend systems, real-time market data, and{" "}
+                <span className="text-foreground">DEX / trading infrastructure</span>.
+              </p>
+
+              {/* Social links */}
+              <div className="mt-5 flex items-center gap-3">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="about-social-link"
+                    aria-label={s.label}
+                  >
+                    {s.icon}
+                    <span className="text-sm font-medium">{s.label}</span>
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats row */}
+          <motion.div
+            variants={fade(0.1)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="relative text-lg sm:text-xl leading-relaxed text-[color:var(--muted)]"
+            className="relative mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4"
           >
-            I&apos;m <span className="font-semibold text-foreground">Sunil Reddy</span> — a full-stack{" "}
-            <span className="text-foreground">web</span> and{" "}
-            <span className="text-foreground">blockchain</span> developer. I build scalable{" "}
-            <span className="text-foreground">Solana</span> dApps, write secure{" "}
-            <span className="text-foreground">Rust</span> programs, and create smooth{" "}
-            <span className="text-foreground">Web3</span> experiences. I&apos;m equally passionate about
-            modern <span className="text-foreground">full-stack web development</span> with{" "}
-            <span className="text-foreground">Next.js</span> and contributing to{" "}
-            <span className="text-foreground">open-source</span> projects that push the crypto
-            ecosystem forward.
-          </motion.p>
+            {stats.map((s, i) => (
+              <div key={i} className="about-stat-card">
+                <span className="about-stat-value">{s.value}</span>
+                <span className="about-stat-label">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
 
           {/* Divider */}
           <div
@@ -109,7 +205,7 @@ export default function About() {
             }}
           />
 
-          {/* Tiles */}
+          {/* Expertise Tiles */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[1fr]">
             {tiles.map((t, i) => (
               <motion.article
@@ -133,7 +229,12 @@ export default function About() {
                 />
 
                 <div className="p-7 flex flex-col grow">
-                  <div className="text-3xl mb-3">{t.emoji}</div>
+                  <div
+                    className="about-tile-icon mb-3"
+                    style={{ background: t.grad }}
+                  >
+                    {t.icon}
+                  </div>
                   <h3 className="font-semibold text-lg text-foreground">
                     {t.title}
                   </h3>
@@ -151,6 +252,72 @@ export default function About() {
               </motion.article>
             ))}
           </div>
+
+          {/* Divider */}
+          <div
+            className="mt-8 h-[2px] w-full rounded-full"
+            style={{
+              background:
+                "linear-gradient(90deg,#f472b666,#22d3ee99,#7c3aed66)",
+            }}
+          />
+
+          {/* Experience Timeline */}
+          <motion.div
+            variants={fade(0.15)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="relative mt-8"
+          >
+            <h3 className="text-lg font-bold text-foreground mb-5 flex items-center gap-2">
+              <Briefcase size={18} className="text-[var(--primary)]" />
+              Experience
+            </h3>
+            <div className="about-timeline">
+              {timeline.map((item, i) => (
+                <motion.div
+                  key={i}
+                  variants={fade(0.18 + i * 0.06)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  className="about-timeline-item"
+                >
+                  <div className="about-timeline-dot">
+                    {item.icon}
+                  </div>
+                  <div className="about-timeline-content">
+                    <div className="flex flex-wrap items-baseline gap-x-2">
+                      <span className="font-semibold text-foreground">{item.role}</span>
+                      <span className="text-xs text-[color:var(--muted)]">@ {item.org}</span>
+                    </div>
+                    <span className="about-timeline-period">{item.period}</span>
+                    <p className="mt-1 text-sm text-[color:var(--muted)] leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Resume CTA */}
+          <motion.div
+            variants={fade(0.25)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="relative mt-8 flex justify-center"
+          >
+            <a
+              href="https://github.com/0xSunill"
+              target="_blank"
+              rel="noreferrer"
+              className="about-cta"
+            >
+              <ExternalLink size={16} />
+              View My Work on GitHub
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>
