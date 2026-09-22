@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { projects } from "../constants/projects";
+import { ExternalLink, Github, Star } from "lucide-react";
 
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -12,6 +13,28 @@ const TABS: Array<{ key: "web3" | "web"; label: string }> = [
     { key: "web3", label: "Web3 Projects" },
     { key: "web", label: "Web Dev Projects" },
 ];
+
+/* tag → accent color map */
+const TAG_COLORS: Record<string, string> = {
+    DeFi: "#22d3ee",
+    Gaming: "#f472b6",
+    Tooling: "#a78bfa",
+    Productivity: "#34d399",
+    Cryptography: "#fbbf24",
+    Solana: "#9945ff",
+    Ethereum: "#627eea",
+    Rust: "#f74b00",
+    Anchor: "#00d4aa",
+    "Next.js": "#ffffff",
+    "Node.js": "#68a063",
+    MongoDB: "#47a248",
+    "Socket.io": "#25c2a0",
+    Tailwind: "#38bdf8",
+    "Framer Motion": "#e846ff",
+    Vite: "#bd34fe",
+    "REST API": "#ff6b6b",
+    Markdown: "#e0e0e0",
+};
 
 export default function Projects() {
     const [active, setActive] = useState<"web3" | "web">("web3");
@@ -69,7 +92,7 @@ export default function Projects() {
             </div>
 
             <div className="mx-auto max-w-7xl px-6 sm:px-10">
-                {/* Title — removed hoverXY-based perspective transform (caused re-renders) */}
+                {/* Title */}
                 <motion.h2
                     initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -156,6 +179,14 @@ export default function Projects() {
                                     {/* glow border */}
                                     <span aria-hidden className="projects-border" />
 
+                                    {/* featured badge */}
+                                    {p.featured && (
+                                        <span className="featured-badge">
+                                            <Star size={12} fill="currentColor" />
+                                            Featured
+                                        </span>
+                                    )}
+
                                     {/* media */}
                                     <div className="aspect-[16/10] relative overflow-hidden rounded-t-2xl">
                                         <Image
@@ -178,16 +209,27 @@ export default function Projects() {
                                             {p.blurb}
                                         </p>
 
-                                        <div className="mt-3 flex flex-wrap gap-2">
-                                            {p.tags.map((t) => (
-                                                <span
-                                                    key={t}
-                                                    className="text-xs px-2 py-1 rounded-md border/60"
-                                                    style={{ borderColor: "var(--border)" }}
-                                                >
-                                                    {t}
-                                                </span>
-                                            ))}
+                                        <div className="mt-3 flex flex-wrap gap-1.5">
+                                            {p.tags.map((t) => {
+                                                const color = TAG_COLORS[t] || "var(--muted)";
+                                                return (
+                                                    <span
+                                                        key={t}
+                                                        className="project-tag"
+                                                        style={{
+                                                            borderColor: `${color}30`,
+                                                            color: color,
+                                                            background: `${color}10`,
+                                                        }}
+                                                    >
+                                                        <span
+                                                            className="project-tag-dot"
+                                                            style={{ background: color }}
+                                                        />
+                                                        {t}
+                                                    </span>
+                                                );
+                                            })}
                                         </div>
 
                                         <div className="mt-4 flex items-center gap-3">
@@ -196,9 +238,10 @@ export default function Projects() {
                                                     href={p.live}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="text-sm underline hover:opacity-100 opacity-90"
+                                                    className="project-link project-link--live"
                                                 >
-                                                    Live
+                                                    <ExternalLink size={14} />
+                                                    Live Demo
                                                 </a>
                                             )}
                                             {p.repo && (
@@ -206,9 +249,10 @@ export default function Projects() {
                                                     href={p.repo}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="text-sm underline hover:opacity-100 opacity-90"
+                                                    className="project-link project-link--code"
                                                 >
-                                                    Code
+                                                    <Github size={14} />
+                                                    Source
                                                 </a>
                                             )}
                                         </div>

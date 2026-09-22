@@ -637,6 +637,116 @@ body {
   }
 }
 
+/* ---- Featured Badge ---- */
+.featured-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0b1020;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  box-shadow: 0 2px 12px rgba(251, 191, 36, 0.4);
+}
+
+/* ---- Project Tags (color-coded) ---- */
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 1px solid;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.project-tag-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.projects-card:hover .project-tag {
+  border-color: currentColor;
+}
+
+/* ---- Project Links (Live / Source) ---- */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.project-link--live {
+  color: var(--primary);
+  background: rgba(124, 219, 255, 0.08);
+  border-color: rgba(124, 219, 255, 0.2);
+}
+
+.project-link--live:hover {
+  background: rgba(124, 219, 255, 0.18);
+  border-color: rgba(124, 219, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(124, 219, 255, 0.15);
+}
+
+.project-link--code {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-link--code:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Light theme overrides */
+:root[data-theme="light"] .featured-badge {
+  color: #fff;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+:root[data-theme="light"] .project-link--live {
+  color: var(--primary);
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+:root[data-theme="light"] .project-link--live:hover {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+:root[data-theme="light"] .project-link--code {
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] .project-link--code:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
 /* ---- Shared CSS animation helpers (replace framer-motion repeat:Infinity) ---- */
 
 @keyframes blob-float {

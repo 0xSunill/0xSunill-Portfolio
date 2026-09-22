@@ -34,7 +34,7 @@ export async function POST(req: Request) {
       .join("\n");
 
     const from = process.env.MAIL_FROM || "onboarding@resend.dev";   // use this in dev
-    const to = process.env.MAIL_TO || "sunilre6776@gmail.com";
+    const to = process.env.MAIL_TO || "sunday7637@gmail.com";
 
     const { data, error } = await resend.emails.send({
       from,
